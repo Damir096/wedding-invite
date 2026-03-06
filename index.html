@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Свадебное приглашение Дамир и Аружан — White Hall, Усть-Каменогорск" />
+  <title>Дамир & Аружан — Свадьба</title>
+
+  <!-- AOS.js – Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Google Fonts (Новые читабельные шрифты) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Основная таблица стилей -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Шрифты из папки (KZ-совместимые) -->
+  <style>
+    @font-face {
+      font-family: 'KZCarolina';
+      src: url('_KZCarolina-Regular_.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'KZRosaMarena';
+      src: url('KZ Rosa Marena.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'KZJikharev';
+      src: url('KZ_Jikharev_.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'AsylbekShelley';
+      src: url('_AsylbekM02Shelley.kz_ (1).ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+     1. HERO — Обложка
+     ============================================================ -->
+  <section class="hero" id="hero">
+    <!-- Заголовок самый верхний -->
+    <div class="hero__text" data-aos="fade-up" style="margin-bottom: 20px;">
+      <p class="hero__subtitle" style="font-size: clamp(1.6rem, 7vw, 2.2rem);">мы женимся!</p>
+      <p class="hero__lovers-text">Д + А = ♡</p>
+    </div>
+
+    <!-- Поляроиды -->
+    <div class="hero__photos" data-aos="fade-up" data-aos-delay="100">
+      <div class="polaroid polaroid--left">
+        <img src="img/arujan_ml.jpeg" alt="Аружан в детстве" />
+        <span class="polaroid__caption">Аружан</span>
+      </div>
+
+      <!-- Текст по центру между фото -->
+      <div class="hero__childhood-text">
+        это мы в детстве
+      </div>
+
+      <div class="polaroid polaroid--right">
+        <img src="img/damir_ml.jpg" alt="Дамир в детстве" />
+        <span class="polaroid__caption">Дамир</span>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+     2. МУЗЫКАЛЬНЫЙ ПЛЕЕР
+     ============================================================ -->
+  <section class="music-section" id="music">
+    <!-- Скрытый аудио-тег. Замените src на реальный путь к MP3 -->
+    <audio id="bg-audio" loop>
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Круглая кнопка с вращающимся текстом -->
+    <button class="music-btn" id="music-btn" aria-label="Включить музыку">
+      <svg class="music-btn__ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="circlePath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+        </defs>
+        <text class="music-btn__ring-text" font-size="15.5">
+          <textPath href="#circlePath" startOffset="0%">
+            ● ВКЛЮЧИТЬ ● МУЗЫКУ ● ВКЛЮЧИТЬ ● МУЗЫКУ
+          </textPath>
+        </text>
+      </svg>
+      <span class="music-btn__icon" id="music-icon">♪</span>
+    </button>
+  </section>
+
+  <!-- ============================================================
+     2.1 ФОТО "КОГДА НАЧАЛИ ВСТРЕЧАТЬСЯ"
+     ============================================================ -->
+  <section class="dating" id="dating">
+    <div class="dating__photos" data-aos="fade-up">
+      <div class="polaroid polaroid--left polaroid--large">
+        <img src="img/arujan_dating.jpeg" alt="Аружан подросток" />
+      </div>
+
+      <!-- Текст по центру между фото -->
+      <div class="dating__text">
+        это мы когда<br>начали встречаться
+      </div>
+
+      <div class="polaroid polaroid--right polaroid--large">
+        <img src="img/damir_dating.jpeg" alt="Дамир подросток" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+     2.2 ФОТО "ВОТ ТАК МЫ СМОТРИМСЯ ВМЕСТЕ"
+     ============================================================ -->
+  <section class="together" id="together">
+    <div class="together__content" data-aos="fade-up">
+      <div class="dating__text">
+        вот так мы<br>смотримся вместе
+      </div>
+      <div class="polaroid polaroid--xlarge">
+        <img src="img/together.jpeg" alt="Мы вместе" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+     2.3 ФОТО "МЫ ХОТЕЛИ ВАМ ЧТО-ТО СООБЩИТЬ"
+     ============================================================ -->
+  <section class="announcement" id="announcement">
+    <div class="announcement__content" data-aos="fade-up">
+      <div class="dating__text">
+        Мы хотели вам<br>что-то сообщить...
+      </div>
+      <div class="polaroid polaroid--xlarge">
+        <img src="img/invite_photo.jpeg" alt="Приходите на свадьбу" />
+      </div>
+      <div class="dating__text dating__text--bottom">
+        А-а-а точно!
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+     3. ТЕКСТОВОЕ ПРИГЛАШЕНИЕ
+     ============================================================ -->
+  <section class="invite" id="invite">
+    <h2 class="section-title" data-aos="fade-up">Дорогие родные и близкие!</h2>
+    <div class="invite__text" data-aos="fade-up" data-aos-delay="100">
+      <p>
+        Мы рады сообщить Вам, что скоро состоится самое главное событие в нашей жизни.
+        Мы решили связать наши судьбы узами брака и хотим разделить этот особенный день с теми,
+        кто нам дорог — с вами!
+      </p>
+    </div>
+
+    <!-- Фото рук -->
+    <div class="invite__photo" data-aos="fade-up" data-aos-delay="200">
+      <img src="img/hands.png" alt="Руки влюблённых" />
+    </div>
+
+    <!-- Врезка-цитата -->
+    <div class="invite__quote" data-aos="fade-up" data-aos-delay="300">
+      <p>Мы выросли, и теперь&nbsp;— мы женимся</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+     4. ТАЙМЕР ОБРАТНОГО ОТСЧЁТА
+     ============================================================ -->
+  <section class="timer" id="timer">
+    <p class="timer__label" data-aos="fade-up">уже через:</p>
+    <div class="timer__grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="timer__cell">
+        <span class="timer__num" id="timer-days">00</span>
+        <span class="timer__unit">Дней</span>
+      </div>
+      <div class="timer__cell">
+        <span class="timer__num" id="timer-hours">00</span>
+        <span class="timer__unit">Часов</span>
+      </div>
+      <div class="timer__cell">
+        <span class="timer__num" id="timer-minutes">00</span>
+        <span class="timer__unit">Минут</span>
+      </div>
+      <div class="timer__cell">
+        <span class="timer__num" id="timer-seconds">00</span>
+        <span class="timer__unit">Секунд</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+     5. ОРГАНИЗАТОРЫ + ДАТА + КАЛЕНДАРЬ
+     ============================================================ -->
+  <section class="organizers" id="organizers">
+    <h2 class="section-title" data-aos="fade-up">Организаторы</h2>
+
+    <div class="organizers__parents" data-aos="fade-up" data-aos-delay="100">
+      <!-- Родители жениха -->
+      <div class="organizers__family">
+        <p class="organizers__role">Родители жениха</p>
+        <p class="organizers__name">Имя Отчество</p>
+        <p class="organizers__name">Имя Отчество</p>
+      </div>
+
+      <!-- Разделитель -->
+      <div class="organizers__divider">♥</div>
+
+      <!-- Родители невесты -->
+      <div class="organizers__family">
+        <p class="organizers__role">Родители невесты</p>
+        <p class="organizers__name">Имя Отчество</p>
+        <p class="organizers__name">Имя Отчество</p>
+      </div>
+    </div>
+
+    <!-- Дата и время -->
+    <div class="event-date" data-aos="fade-up" data-aos-delay="150">
+      <p class="event-date__day">12 ИЮЛЯ 2026</p>
+      <p class="event-date__time">в 15:00</p>
+    </div>
+
+    <!-- Календарь -->
+    <div class="calendar" data-aos="fade-up" data-aos-delay="200">
+      <div class="calendar__header">
+        <span class="calendar__month">Июль 2026</span>
+      </div>
+      <div class="calendar__grid" id="calendar-grid">
+        <!-- Заполняется через JS -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+     6. ЛОКАЦИЯ
+     ============================================================ -->
+  <section class="location" id="location">
+    <h2 class="section-title" data-aos="fade-up">Место</h2>
+
+    <div class="location__venue" data-aos="fade-up" data-aos-delay="100">
+      <p class="location__name">White Hall</p>
+      <p class="location__address">г. Усть-Каменогорск,<br />ул. Добролюбова 42, 1</p>
+    </div>
+
+    <!-- Кнопка карты -->
+    <a class="btn-map"
+      href="https://2gis.kz/ust-kamenogorsk/search/%D0%A3%D1%81%D1%82%D1%8C-%D0%9A%D0%B0%D0%BC%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D0%B0%2042"
+      target="_blank" rel="noopener" data-aos="fade-up" data-aos-delay="150">
+      📍 Открыть карту
+    </a>
+  </section>
+
+
+  <!-- ============================================================
+     7. ПОЖЕЛАНИЯ ПО ПОДАРКАМ
+     ============================================================ -->
+  <section class="gifts" id="gifts">
+    <div class="gifts__icon" data-aos="fade-up">🎁</div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Дресс-код и пожелания</h2>
+    <div class="gifts__text" data-aos="fade-up" data-aos-delay="100">
+      <p>
+        Главный подарок для нас — ваше присутствие и хорошее настроение!
+        Если вы всё же хотите порадовать нас подарком, будем признательны за конверт.
+      </p>
+      <p class="gifts__dress">
+        Дресс-код: пастельные тона — пудровый, айвори, нежно-розовый, бежевый.
+        Просим воздержаться от белого и чёрного.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+     8. АНКЕТА ГОСТЯ (RSVP)
+     ============================================================ -->
+  <section class="rsvp" id="rsvp">
+    <h2 class="section-title" data-aos="fade-up">Анкета гостя</h2>
+    <p class="rsvp__subtitle" data-aos="fade-up" data-aos-delay="50">
+      Пожалуйста, заполните форму до <strong>1 июля 2026</strong>
+    </p>
+
+    <form class="rsvp-form" id="rsvp-form" novalidate data-aos="fade-up" data-aos-delay="100">
+
+      <!-- Имя -->
+      <div class="form-group">
+        <label for="rsvp-name">Ваше имя *</label>
+        <input type="text" id="rsvp-name" name="name" placeholder="Введите ваше имя" required />
+      </div>
+
+      <!-- Явка -->
+      <div class="form-group">
+        <label>Сможете прийти?</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="attendance" value="Приду" required />
+            <span>Приду! 🎉</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="attendance" value="Не смогу" />
+            <span>К сожалению, не смогу</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Количество персон -->
+      <div class="form-group">
+        <label for="rsvp-guests">Количество персон</label>
+        <input type="number" id="rsvp-guests" name="guests" min="1" max="10" placeholder="1" value="1" />
+      </div>
+
+      <!-- Пожелание -->
+      <div class="form-group">
+        <label for="rsvp-wish">Ваше пожелание молодожёнам</label>
+        <textarea id="rsvp-wish" name="wish" rows="4" placeholder="Напишите тёплые слова..."></textarea>
+      </div>
+
+      <!-- Кнопка -->
+      <button type="submit" class="btn-submit" id="rsvp-submit">Отправить</button>
+    </form>
+  </section>
+
+
+  <!-- ============================================================
+     FOOTER
+     ============================================================ -->
+  <footer class="site-footer">
+    <p>Дамир &amp; Аружан — 12.07.2026</p>
+    <p class="site-footer__hearts">♥ ♥ ♥</p>
+  </footer>
+
+
+  <!-- AOS.js -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Основной скрипт -->
+  <script src="script.js"></script>
+</body>
+
+</html>

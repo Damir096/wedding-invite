@@ -1,0 +1,958 @@
+/* =============================================================
+   WEDDING SITE — style.css
+   Mobile-First, Pastel Palette, based on "Пәк Сезім" template
+   ============================================================= */
+
+/* ── ПЕРЕМЕННЫЕ ────────────────────────────────────────────── */
+:root {
+  --clr-bg: #faf4f0;
+  /* чуть более приглушённый фон */
+  --clr-surface: #ffffff;
+  /* карточки / секции */
+  --clr-accent: #7A2F1A;
+  /* более тёмный и насыщенный акцент заголовков */
+  --clr-accent2: #9C523A;
+  /* более тёмный дополнительный акцент */
+  --clr-text: #1F1612;
+  /* более тёмный, почти чёрный основной текст */
+  --clr-muted: #5E524C;
+  /* более тёмный вторичный текст для хорошей читаемости */
+  --clr-border: #DFD0C6;
+  /* более чёткие рамки */
+  --clr-highlight: #9E2B14;
+  /* дата в календаре, кнопки (более глубокий цвет) */
+  --ff-script: 'Caveat', cursive;
+  --ff-serif: 'Cormorant Garamond', serif;
+  --ff-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Переменные для обложки удалены, так как теперь шрифты едины везде */
+
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(70, 30, 10, .15);
+  --transition: .3s ease;
+}
+
+/* ── СБРОС И БАЗА ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--ff-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── ТЕКСТУРНЫЙ ФОН ────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+section,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── ТИПОГРАФИЯ ────────────────────────────────────────────── */
+.section-title {
+  font-family: var(--ff-script);
+  font-size: clamp(1.5rem, 6vw, 2.4rem);
+  color: var(--clr-accent);
+  text-align: center;
+  letter-spacing: .06em;
+  margin-bottom: 1.2rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   1. HERO
+   ══════════════════════════════════════════════════════════════ */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* Прижимаем контент к верху, а не по центру */
+  padding: 10vh 20px 0px;
+  /* Отступ сверху в 10% от высоты экрана, снизу 0 чтобы плеер был ближе */
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 20% 10%, #fce4d8 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 90%, #fce0e6 0%, transparent 55%),
+    var(--clr-bg);
+  gap: 16px;
+  /* Уменьшил отступы между блоками внутри Hero */
+}
+
+/* Декоративные элементы убраны в пользу расположения под заголовком */
+
+/* Анимация пульсации (сердечко) */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.15);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.15);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+.hero__lovers-text {
+  font-family: var(--ff-serif);
+  color: var(--clr-accent2);
+  /* Увеличил размер шрифта по просьбе */
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  letter-spacing: 0.1em;
+  margin-top: 5px;
+  display: inline-block;
+  /* Необходимо для transform (анимации) */
+  animation: heartbeat 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Поляроиды */
+.hero__photos {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  /* Центрируем по вертикали, чтобы текст не прыгал */
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.hero__childhood-text {
+  font-family: var(--ff-script);
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: var(--clr-accent2);
+  transform: rotate(-5deg);
+  /* Лёгкий наклон для стиля */
+  white-space: nowrap;
+  margin: 0 -10px;
+  /* Немного наезжаем на фото */
+  z-index: 2;
+}
+
+.polaroid {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  padding: 8px 8px 28px;
+  width: 130px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.polaroid--large {
+  width: clamp(100px, 33vw, 155px);
+  /* Адаптивный размер, чтобы фото влезали на узкие экраны */
+}
+
+.polaroid--xlarge {
+  width: clamp(200px, 75vw, 320px);
+  /* Крупное одиночное фото */
+  transform: rotate(-2deg);
+  /* Лёгкий наклон для стиля */
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.polaroid__caption {
+  display: block;
+  text-align: center;
+  font-family: var(--ff-script);
+  font-size: 1.6rem;
+  /* Увеличил размер */
+  color: var(--clr-accent);
+  /* Сделал цвет как у центральной надписи */
+  margin-top: 2px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+.polaroid--left {
+  transform: rotate(-4deg);
+}
+
+.polaroid--right {
+  transform: rotate(3.5deg);
+}
+
+/* Заголовочный текст в Hero */
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__subtitle {
+  font-family: var(--ff-script);
+  font-size: clamp(2rem, 8vw, 3rem);
+  /* укрупнил, так как Caveat немного мельче */
+  color: var(--clr-accent);
+  letter-spacing: .08em;
+}
+
+.hero__names {
+  font-family: var(--ff-script);
+  font-size: clamp(3.2rem, 14vw, 5.5rem);
+  /* Увеличил размер */
+  color: var(--clr-text);
+  line-height: 1.1;
+}
+
+.hero__and {
+  font-size: .6em;
+  color: var(--clr-accent);
+  display: block;
+  line-height: 1.4;
+}
+
+.hero__date-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-family: var(--ff-serif);
+  font-size: .9rem;
+  color: var(--clr-muted);
+}
+
+.hero__date {
+  font-family: var(--ff-serif);
+  font-size: 1rem;
+  color: var(--clr-accent);
+  letter-spacing: .18em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. МУЗЫКАЛЬНЫЙ ПЛЕЕР
+   ══════════════════════════════════════════════════════════════ */
+.music-section {
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px 40px;
+  /* Убрал отступ сверху, чтобы плеер был вплотную к Hero */
+  background: var(--clr-surface);
+  margin-top: -20px;
+  /* Слегка подтягиваем плеер наверх */
+}
+
+.music-btn {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--transition);
+}
+
+.music-btn:hover {
+  transform: scale(1.05);
+}
+
+.music-btn:active {
+  transform: scale(.97);
+}
+
+.music-btn__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: rotate-ring 12s linear infinite;
+  transform-origin: center;
+}
+
+.music-btn__ring-text {
+  fill: var(--clr-accent);
+  font-family: var(--ff-sans);
+  font-size: 15px;
+  letter-spacing: 1.5px;
+}
+
+.music-btn__icon {
+  font-size: 2.6rem;
+  color: var(--clr-accent);
+  user-select: none;
+  z-index: 2;
+  transition: transform var(--transition);
+}
+
+@keyframes rotate-ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2.1. ФОТО "КОГДА НАЧАЛИ ВСТРЕЧАТЬСЯ"
+   ══════════════════════════════════════════════════════════════ */
+.dating {
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px 40px;
+}
+
+.dating__photos {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.dating__text {
+  font-family: var(--ff-script);
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: var(--clr-accent2);
+  transform: rotate(3deg);
+  /* Наклон в другую сторону для разнообразия */
+  white-space: nowrap;
+  margin: 0 -10px;
+  z-index: 2;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2.2. ФОТО "ВОТ ТАК МЫ СМОТРИМСЯ ВМЕСТЕ"
+   ══════════════════════════════════════════════════════════════ */
+.together {
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px 40px;
+}
+
+.together__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2.3. ФОТО "МЫ ХОТЕЛИ ВАМ ЧТО-ТО СООБЩИТЬ"
+   ══════════════════════════════════════════════════════════════ */
+.announcement {
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px 40px;
+}
+
+.announcement__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+}
+
+.dating__text--bottom {
+  transform: rotate(-4deg);
+  /* Наклон в другую сторону для нижней надписи */
+  margin-top: -10px;
+  /* Придвигаем к фото снизу */
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. ПРИГЛАШЕНИЕ
+   ══════════════════════════════════════════════════════════════ */
+.invite {
+  padding: 52px 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+
+.invite__text p {
+  font-size: 1rem;
+  color: var(--clr-text);
+  line-height: 1.8;
+}
+
+.invite__photo {
+  width: min(100%, 380px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.invite__photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.invite__quote {
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 18px 28px;
+  width: 100%;
+}
+
+.invite__quote p {
+  font-family: var(--ff-script);
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: var(--clr-accent);
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. ТАЙМЕР
+   ══════════════════════════════════════════════════════════════ */
+.timer {
+  background:
+    radial-gradient(ellipse at center, #fce8df 0%, var(--clr-bg) 70%);
+  padding: 48px 20px;
+  text-align: center;
+}
+
+.timer__label {
+  font-family: var(--ff-serif);
+  font-size: 1.1rem;
+  color: var(--clr-muted);
+  letter-spacing: .12em;
+  margin-bottom: 24px;
+}
+
+.timer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.timer__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 16px 8px;
+  box-shadow: var(--shadow);
+}
+
+.timer__num {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  color: var(--clr-highlight);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.timer__unit {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--clr-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. ОРГАНИЗАТОРЫ + КАЛЕНДАРЬ
+   ══════════════════════════════════════════════════════════════ */
+.organizers {
+  padding: 52px 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.organizers__parents {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.organizers__family {
+  flex: 1;
+  min-width: 120px;
+}
+
+.organizers__role {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--clr-muted);
+  margin-bottom: 6px;
+}
+
+.organizers__name {
+  font-family: var(--ff-serif);
+  font-size: 1.05rem;
+  color: var(--clr-text);
+  line-height: 1.5;
+}
+
+.organizers__divider {
+  font-size: 1.4rem;
+  color: var(--clr-accent2);
+  align-self: center;
+  padding-top: 20px;
+}
+
+/* Дата события */
+.event-date {
+  text-align: center;
+}
+
+.event-date__day {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
+  color: var(--clr-accent);
+  letter-spacing: .12em;
+}
+
+.event-date__time {
+  font-size: 1rem;
+  color: var(--clr-muted);
+  margin-top: 4px;
+  letter-spacing: .1em;
+}
+
+/* Календарь */
+.calendar {
+  background: #fff;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: var(--shadow);
+}
+
+.calendar__header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.calendar__month {
+  font-family: var(--ff-serif);
+  font-size: 1.1rem;
+  color: var(--clr-accent);
+  letter-spacing: .1em;
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.calendar__day-name {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--clr-muted);
+  padding: 4px 0;
+}
+
+.calendar__day {
+  font-size: .82rem;
+  padding: 5px 2px;
+  border-radius: 50%;
+  cursor: default;
+  color: var(--clr-text);
+  transition: background var(--transition);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar__day--empty {
+  background: transparent;
+}
+
+.calendar__day--today {
+  background: var(--clr-highlight);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 0 2.5px var(--clr-highlight), 0 0 0 5px rgba(181, 70, 42, .18);
+  animation: pulse-date 2s ease-in-out infinite;
+}
+
+@keyframes pulse-date {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 2.5px var(--clr-highlight), 0 0 0 5px rgba(181, 70, 42, .18);
+  }
+
+  50% {
+    box-shadow: 0 0 0 2.5px var(--clr-highlight), 0 0 0 9px rgba(181, 70, 42, .06);
+  }
+}
+
+.calendar__day--weekend {
+  color: var(--clr-accent2);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. ЛОКАЦИЯ
+   ══════════════════════════════════════════════════════════════ */
+.location {
+  background: var(--clr-surface);
+  padding: 52px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.location__venue {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.location__name {
+  font-family: var(--ff-script);
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  color: var(--clr-accent);
+  letter-spacing: .06em;
+}
+
+.location__address {
+  font-size: .95rem;
+  color: var(--clr-muted);
+  line-height: 1.6;
+}
+
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--clr-highlight);
+  color: #fff;
+  border-radius: 40px;
+  padding: 14px 32px;
+  font-size: .95rem;
+  font-family: var(--ff-sans);
+  letter-spacing: .08em;
+  box-shadow: 0 6px 18px rgba(181, 70, 42, .3);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-map:hover {
+  background: var(--clr-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(120, 60, 20, .35);
+}
+
+.btn-map:active {
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. ПОДАРКИ / ДРЕСС-КОД
+   ══════════════════════════════════════════════════════════════ */
+.gifts {
+  padding: 52px 24px;
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.gifts__icon {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.gifts__text p {
+  font-size: .95rem;
+  color: var(--clr-text);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.gifts__dress {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  color: var(--clr-muted) !important;
+  font-size: .9rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. АНКЕТА ГОСТЯ
+   ══════════════════════════════════════════════════════════════ */
+.rsvp {
+  background:
+    radial-gradient(ellipse at center, #fce8df 0%, var(--clr-bg) 70%);
+  padding: 52px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.rsvp__subtitle {
+  font-size: .9rem;
+  color: var(--clr-muted);
+  text-align: center;
+}
+
+.rsvp-form {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--clr-muted);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+  background: #fff;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: var(--ff-sans);
+  color: var(--clr-text);
+  width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent2);
+  box-shadow: 0 0 0 3px rgba(196, 133, 106, .2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Радиокнопки */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: .95rem;
+  color: var(--clr-text);
+  padding: 12px 16px;
+  background: #fff;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.radio-label:hover {
+  border-color: var(--clr-accent2);
+  background: #fff8f5;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: var(--clr-highlight);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Кнопка отправки */
+.btn-submit {
+  background: var(--clr-highlight);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 16px 40px;
+  font-size: 1rem;
+  font-family: var(--ff-sans);
+  letter-spacing: .1em;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(181, 70, 42, .3);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  align-self: center;
+  min-width: 180px;
+}
+
+.btn-submit:hover {
+  background: var(--clr-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(120, 60, 20, .35);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--clr-accent);
+  color: rgba(255, 255, 255, .85);
+  text-align: center;
+  padding: 28px 20px;
+  font-family: var(--ff-serif);
+  font-size: .9rem;
+  letter-spacing: .08em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-footer__hearts {
+  font-size: 1rem;
+  letter-spacing: .3em;
+  color: rgba(255, 255, 255, .55);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   АДАПТИВ ДЛЯ БОЛЬШИХ ЭКРАНОВ
+   ══════════════════════════════════════════════════════════════ */
+@media (min-width: 480px) {
+  .polaroid {
+    width: 160px;
+  }
+
+  .hero__photos {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 640px) {
+  .radio-group {
+    flex-direction: row;
+  }
+
+  .radio-label {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .organizers__parents {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .polaroid {
+    width: 185px;
+  }
+
+  .timer__num {
+    font-size: 3rem;
+  }
+
+  .hero__names {
+    font-size: 5rem;
+  }
+}
